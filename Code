@@ -1,0 +1,47 @@
+import javax.swing.*;
+
+public class TextInput {
+    public static void main(String[] args) {
+        // Create a JFrame (the main window)
+        JFrame frame = new JFrame("Integer Input Example");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 200);
+
+        // Create a JPanel (a container for components)
+        JPanel panel = new JPanel();
+
+        // Create a JLabel (a label for the input field)
+        JLabel label = new JLabel("Enter milimeters:");
+
+        // Create a JTextField (the input field)
+        JTextField textField = new JTextField(20);
+
+        // Create a JButton (a button to submit the input)
+        JButton button = new JButton("Submit");
+
+        // Add an ActionListener to the button
+        button.addActionListener(e -> {
+            try {
+                // Get the text from the input field and parse it as an integer
+                float inputNumber = Float.parseFloat(textField.getText());
+                // Display the integer in a dialog
+                float answer = (float) (inputNumber*360/6.28318/410);
+                JOptionPane.showMessageDialog(frame, "Answer: " + answer);
+            } catch (NumberFormatException ex) {
+                // Show an error message if input is not a valid integer
+                JOptionPane.showMessageDialog(frame, "Please enter a valid float(point)!", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        });
+
+        // Add components to the panel
+        panel.add(label);
+        panel.add(textField);
+        panel.add(button);
+
+        // Add the panel to the frame
+        frame.add(panel);
+
+        // Make the frame visible
+        frame.setVisible(true);
+    }
+}
